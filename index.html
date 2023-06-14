@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <style type="text/css">
+        *
+        {
+            padding: 0;
+            margin: 0;
+        }
+        body
+        {
+            background-image: url("https://plus.unsplash.com/premium_photo-1680883415362-238794b19dde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3Vuc2V0JTIwJTIwc2t5fGVufDB8fDB8fHww&w=1000&q=80");
+            background-position: cover;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba(0, 0, 0, 0.7);
+            background-blend-mode: overlay;
+            display: grid;
+            place-items: center;
+        }
+        #grid
+        {
+            height: 18em;
+            width:auto;
+            min-width: 5em;
+            backdrop-filter: blur(15px);
+            text-align: center;
+            padding: 2%;
+            margin-top: 10%;
+            border-radius: 20px;
+            box-shadow:0px 0.5px 20px black;
+        }
+        #inp,select
+        {
+            border: 1px solid black;
+            border-top:0;
+            border-right: 0;
+            border-left: 0;
+            padding: 5px;
+        }
+
+        select option
+        {
+            background-color: transparent;
+            color: black;
+            border-radius: 0px;
+        }
+
+        select option:hover
+        {
+            background-color: transparent;
+            border: 1px solid gray;
+        }
+
+        select:focus 
+        {
+            border-color: transparent transparent black transparent;
+            border-width: 0 0 1px 0;
+            outline:  none;
+        }
+        #inp:hover,select:hover{
+            background-color:rgb(225, 225, 225);
+        }
+        #inp:focus
+        {
+            border-color: transparent transparent black transparent;
+            border-width: 0 0 1px 0;
+            outline:  none;
+        }
+
+        button
+        {
+            padding: 15px;
+            border-radius: 10px;
+            border: 0;
+            background-color: rgb(68, 215, 0);
+            color: white;
+            font-weight: bolder;
+            box-shadow: 0px 1px 100px rgb(31, 31, 31);
+
+        }
+        button:hover
+        {
+            background-color: rgb(67, 153, 17);
+            transition-delay:0.01s;
+        }
+        h2
+        {
+            color:white;
+        }
+        #result
+        {
+            color: white;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="grid">
+        <h2>TEMPERATURE CONVERTER</h2>
+        <br><br>
+        <input id="inp" type="text" placeholder="ENTER DEGREES">
+        <select id="type">
+            <option value="C">&deg C</option>
+            <option value="F">&deg F</option>
+            
+        </select>
+        <br>
+        <br>
+
+
+        <p style="color: white;"> CONVERT INTO &nbsp &nbsp : &nbsp &nbsp &nbsp          
+        <select id="to">
+            <option value="C">&deg C</option>
+            <option value="F">&deg F</option>
+        </select>
+        </p>
+        <br>
+        <br>
+
+        <button onclick="convert()">CONVERT</button>
+        <br>
+        <br>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convert()
+        {
+            var temp = parseInt(document.getElementById("inp").value);
+            var From  = document.getElementById("type").value;
+            var To  = document.getElementById("to").value;
+            
+            if(isNaN(temp))
+            {
+                window.alert("please enter the numerical temp values");
+            }
+            else
+            {
+
+            if(From == "C" && To == "F")
+            {
+            document.getElementById("result").innerHTML = "CONVERTED FAHRENHEIT TEMP IS : <br>" + (((temp*9)/5)+32) +"&deg F";
+            }
+            else if(From == "F" && To == "C")
+            {
+            document.getElementById("result").innerHTML = "CONVERTED CELCIUS TEMP IS : <br>" +((temp-32)*5)/9 +"&deg C";
+            }
+            else
+            {
+            document.getElementById("result").innerHTML = `cant convert &deg ${From} to &deg${To}`
+            }
+
+            }
+        }
+    </script>
+</body>
+</html>
